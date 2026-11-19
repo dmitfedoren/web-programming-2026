@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Журнал оцінок — Лабораторна робота № 3</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/storage.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/events.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page">
+  <header class="header page__header">
+    <div class="header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">ЖО</span>
+        <span class="brand__name">Журнал оцінок · ЧДТУ</span>
+      </a>
+      <nav class="nav" aria-label="Головна навігація">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link nav__link--active" href="index.html">Журнал оцінок</a></li>
+          <li class="nav__item"><a class="nav__link" href="tasks.html">Задачі JS (assert)</a></li>
+          <li class="nav__item"><a class="nav__link" href="strict.html">Строгий режим</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="sidebar page__aside" aria-label="Підсумкові показники журналу">
+    <h2 class="sidebar__title">Підсумкові показники</h2>
+    <div class="stats-list">
+      <div class="stat-box">
+        <div class="stat-box__label">Усього записів</div>
+        <div class="stat-box__value" id="stat-total">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box__label">Відібрано за фільтром</div>
+        <div class="stat-box__value" id="stat-filtered">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box__label">Зараховано</div>
+        <div class="stat-box__value" id="stat-verified">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box__label">Середній бал (вибірка)</div>
+        <div class="stat-box__value" id="stat-average">0.0</div>
+      </div>
+    </div>
+    <button type="button" class="button button--danger" id="clear-storage-btn">
+      Очистити сховище
+    </button>
+  </aside>
+
+  <main class="main page__main">
+    <section class="panel" aria-labelledby="form-heading">
+      <h1 class="panel__title" id="form-heading">Додати результат оцінювання</h1>
+      <p class="panel__subtitle">Варіант 4: Журнал оцінок — додавання, редагування бала на місці, фільтрація за дисципліною та обчислення середнього бала.</p>
+
+      <form class="grade-form" name="gradeForm" id="grade-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="student-input">ПІБ студента</label>
+          <input class="field__input" id="student-input" name="student" type="text"
+                 placeholder="Наприклад, Федоренко Д.О." required minlength="3" maxlength="60">
+          <span class="field__error" id="error-student" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="subject-select">Дисципліна</label>
+          <select class="field__select" id="subject-select" name="subject" required>
+            <option value="">Оберіть дисципліну…</option>
+            <option value="Основи WEB-технологій">Основи WEB-технологій</option>
+            <option value="Бази даних">Бази даних</option>
+            <option value="Алгоритми та структури даних">Алгоритми та структури даних</option>
+            <option value="Комп’ютерні мережі">Комп’ютерні мережі</option>
+          </select>
+          <span class="field__error" id="error-subject" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="score-input">Оцінка (0–100)</label>
+          <input class="field__input" id="score-input" name="score" type="number"
+                 placeholder="95" required min="0" max="100" step="1">
+          <span class="field__error" id="error-score" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="date-input">Дата</label>
+          <input class="field__input" id="date-input" name="date" type="date" required>
+          <span class="field__error" id="error-date" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <span class="field__label" aria-hidden="true">&nbsp;</span>
+          <button type="submit" class="button button--primary" id="add-grade-btn">Додати оцінку</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="list-heading">
+      <div class="toolbar">
+        <div>
+          <h2 class="panel__title" id="list-heading">Список результатів</h2>
+          <p class="panel__subtitle">Делегування подій, пошук із debounce (300 мс) та збереження в localStorage.</p>
+        </div>
+
+        <div class="toolbar__group">
+          <div class="field">
+            <label class="field__label" for="search-input">Пошук (студент / дисципліна)</label>
+            <input class="field__input" id="search-input" type="search" placeholder="Введіть запит…">
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="filter-subject">Фільтр за дисципліною</label>
+            <select class="field__select" id="filter-subject">
+              <option value="all">Усі дисципліни</option>
+              <option value="Основи WEB-технологій">Основи WEB-технологій</option>
+              <option value="Бази даних">Бази даних</option>
+              <option value="Алгоритми та структури даних">Алгоритми та структури даних</option>
+              <option value="Комп’ютерні мережі">Комп’ютерні мережі</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="filter-status">Стан</label>
+            <select class="field__select" id="filter-status">
+              <option value="all">Усі стани</option>
+              <option value="verified">Зараховано</option>
+              <option value="pending">На перевірці</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="sort-select">Упорядкування</label>
+            <select class="field__select" id="sort-select">
+              <option value="score-desc">Оцінка (за спаданням)</option>
+              <option value="score-asc">Оцінка (за зростанням)</option>
+              <option value="student-asc">Студент (А–Я)</option>
+              <option value="date-desc">Дата (найновіші)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <ul class="grade-list" id="grade-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer class="footer page__footer">
+    Лабораторна робота № 3 · Основи WEB-технологій · Федоренко Д.О., гр. ПЗ-2304 (2026)
+  </footer>
+</body>
+</html>

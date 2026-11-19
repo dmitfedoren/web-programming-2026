@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Строгий режим — Лабораторна робота № 3</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/strict-off.js" defer></script>
+  <script src="js/strict-on.js" defer></script>
+</head>
+<body class="page">
+  <header class="header page__header">
+    <div class="header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">ЖО</span>
+        <span class="brand__name">Журнал оцінок · ЧДТУ</span>
+      </a>
+      <nav class="nav" aria-label="Головна навігація">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="index.html">Журнал оцінок</a></li>
+          <li class="nav__item"><a class="nav__link" href="tasks.html">Задачі JS (assert)</a></li>
+          <li class="nav__item"><a class="nav__link nav__link--active" href="strict.html">Строгий режим</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="sidebar page__aside">
+    <h2 class="sidebar__title">Дослідження режимів</h2>
+    <p class="panel__subtitle">Підключено два класичні сценарії в IIFE: <code>js/strict-off.js</code> (нестрогий) та <code>js/strict-on.js</code> (із <code>"use strict";</code>).</p>
+  </aside>
+
+  <main class="main page__main">
+    <section class="panel">
+      <h1 class="panel__title">Порівняння нестрогого та строгого режимів JavaScript</h1>
+      <p class="panel__subtitle">Відкрийте вкладку Console у DevTools, щоб побачити результати виконання 4 ситуацій часу виконання та 3 помилок розбору через new Function.</p>
+      <div class="code-log" id="strict-log"></div>
+    </section>
+  </main>
+
+  <footer class="footer page__footer">
+    Лабораторна робота № 3 · Строгий режим · Федоренко Д.О., гр. ПЗ-2304
+  </footer>
+</body>
+</html>

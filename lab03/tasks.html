@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задачі JS (console.assert) — Лабораторна робота № 3</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tasks/custom-map.js" defer></script>
+  <script src="js/tasks/custom-filter.js" defer></script>
+  <script src="js/tasks/custom-reduce.js" defer></script>
+  <script src="js/tasks/custom-find.js" defer></script>
+  <script src="js/tasks/custom-flat.js" defer></script>
+  <script src="js/tasks/custom-deep-clone.js" defer></script>
+  <script src="js/tasks/custom-debounce.js" defer></script>
+</head>
+<body class="page">
+  <header class="header page__header">
+    <div class="header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">ЖО</span>
+        <span class="brand__name">Журнал оцінок · ЧДТУ</span>
+      </a>
+      <nav class="nav" aria-label="Головна навігація">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="index.html">Журнал оцінок</a></li>
+          <li class="nav__item"><a class="nav__link nav__link--active" href="tasks.html">Задачі JS (assert)</a></li>
+          <li class="nav__item"><a class="nav__link" href="strict.html">Строгий режим</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="sidebar page__aside">
+    <h2 class="sidebar__title">Підключені модулі задач</h2>
+    <p class="panel__subtitle">Кожен файл обгорнуто в IIFE у строгому режимі. Відкрийте вкладку Console у DevTools для перегляду результатів.</p>
+  </aside>
+
+  <main class="main page__main">
+    <section class="panel">
+      <h1 class="panel__title">Власні реалізації вбудованих можливостей JavaScript</h1>
+      <p class="panel__subtitle">Реалізовано: custom map, custom filter, custom reduce, custom find, custom flat(depth), custom deepClone та custom debounce. Усі перевірки виконуються через console.assert.</p>
+      <div class="code-log" id="tasks-log">Виконання перевірок console.assert…</div>
+    </section>
+  </main>
+
+  <footer class="footer page__footer">
+    Лабораторна робота № 3 · Задачі JS · Федоренко Д.О., гр. ПЗ-2304
+  </footer>
+</body>
+</html>
