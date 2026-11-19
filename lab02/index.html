@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CloudPulse — Панель керування сервісом (ЛР № 2)</title>
+    <link rel="stylesheet" href="style/style.css">
+  </head>
+  <body class="page">
+    <a class="skip-link" href="#main-content">Перейти до основного вмісту</a>
+
+    <!-- Шапка: Flexbox (логотип ліворуч, меню посередині, дії праворуч) -->
+    <header class="header page__header">
+      <div class="header__inner">
+        <a class="brand header__brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">CP</span>
+          <span class="brand__name">CloudPulse</span>
+        </a>
+
+        <nav class="nav header__nav" aria-label="Головна навігація">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a class="nav__link nav__link--active" href="#overview" aria-current="page">Огляд</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#metrics">Показники</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#services">Сервіси</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#reports">Звіти</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header__actions">
+          <a class="button button--ghost" href="#alerts">Сповіщення (2)</a>
+          <a class="button button--primary" href="#deploy">Новий реліз</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Бічна панель: меню розділів панелі керування -->
+    <aside class="sidebar page__aside" aria-label="Меню розділів сервісу">
+      <h2 class="sidebar__title">Розділи панелі</h2>
+      <ul class="sidebar__list">
+        <li class="sidebar__item">
+          <a class="sidebar__link sidebar__link--active" href="#overview">Зведена аналітика</a>
+        </li>
+        <li class="sidebar__item">
+          <a class="sidebar__link" href="#metrics">Доступність вузлів (SLA)</a>
+        </li>
+        <li class="sidebar__item">
+          <a class="sidebar__link" href="#services">Навантаження CPU та RAM</a>
+        </li>
+        <li class="sidebar__item">
+          <a class="sidebar__link" href="#reports">Журнал HTTP-помилок</a>
+        </li>
+        <li class="sidebar__item">
+          <a class="sidebar__link" href="#alerts">Тригери та інциденти</a>
+        </li>
+        <li class="sidebar__item">
+          <a class="sidebar__link" href="#deploy">Черги завдань і CI/CD</a>
+        </li>
+      </ul>
+
+      <section class="status-box sidebar__status" aria-label="Стан кластера">
+        <h3 class="status-box__title">Стан системи</h3>
+        <p class="status-box__text">Усі 12 мікросервісів працюють у штатному режимі. Середній час відгуку: 118 мс.</p>
+      </section>
+    </aside>
+
+    <!-- Основна область вмісту -->
+    <main id="main-content" class="main page__main">
+      <section id="overview" class="hero main__hero">
+        <div class="hero__content">
+          <h1 class="hero__title">Панель керування сервісом CloudPulse</h1>
+          <p class="hero__subtitle">
+            Оперативний моніторинг ключових метрик інфраструктури, пропускної здатності API та якості обслуговування користувачів у реальному часі.
+          </p>
+        </div>
+      </section>
+
+      <!-- Адаптивна сітка карток без медіа-запитів: repeat(auto-fill, minmax(...)) -->
+      <section id="metrics" class="metrics-section" aria-labelledby="metrics-heading">
+        <h2 id="metrics-heading" class="metrics-section__title">Ключові показники та зведені дані</h2>
+
+        <div class="cards-grid">
+          <article class="metric-card metric-card--featured">
+            <img class="metric-card__image" src="images/card-uptime.svg" alt="Графік доступності сервісу 99,98% за останні 30 днів" width="320" height="140">
+            <h3 class="metric-card__title">Доступність SLA — 99,98%</h3>
+            <p class="metric-card__desc">Сумарний час безперебійної роботи продуктивних вузлів за поточний місяць без критичних простоїв.</p>
+            <a class="metric-card__link" href="#reports">Детальний звіт SLA</a>
+          </article>
+
+          <article class="metric-card">
+            <img class="metric-card__image" src="images/card-rps.svg" alt="Стовпчикова діаграма інтенсивності запитів 1 420 RPS" width="320" height="140">
+            <h3 class="metric-card__title">Трафік API — 1 420 запит/с</h3>
+            <p class="metric-card__desc">Пікове навантаження на шлюз REST API зросло на 14% порівняно з попереднім тижнем.</p>
+            <a class="metric-card__link" href="#services">Аналіз трафіку</a>
+          </article>
+
+          <article class="metric-card">
+            <img class="metric-card__image" src="images/card-latency.svg" alt="Графік середнього часу відгуку 118 мілісекунд" width="320" height="140">
+            <h3 class="metric-card__title">Затримка P95 — 118 мс</h3>
+            <p class="metric-card__desc">95% усіх HTTP-запитів обробляються швидше нормативного порога у 250 мс завдяки кешуванню Redis.</p>
+            <a class="metric-card__link" href="#services">Профілювання запитів</a>
+          </article>
+
+          <article class="metric-card">
+            <img class="metric-card__image" src="images/card-errors.svg" alt="Діаграма частки помилок 5xx на рівні 0,04%" width="320" height="140">
+            <h3 class="metric-card__title">Помилки 5xx — 0,04%</h3>
+            <p class="metric-card__desc">Зафіксовано 14 тимчасових тайм-аутів зовнішнього шлюзу за добу, автоматичний повтор успішний.</p>
+            <a class="metric-card__link" href="#alerts">Журнал інцидентів</a>
+          </article>
+
+          <article class="metric-card">
+            <img class="metric-card__image" src="images/card-cpu.svg" alt="Індикатор завантаження процесора кластера 42%" width="320" height="140">
+            <h3 class="metric-card__title">Завантаження CPU — 42%</h3>
+            <p class="metric-card__desc">Рівномірний розподіл навантаження між 4 активними контейнерами бекенду з запасом масштабування.</p>
+            <a class="metric-card__link" href="#services">Метрики вузлів</a>
+          </article>
+
+          <article class="metric-card">
+            <img class="metric-card__image" src="images/card-db.svg" alt="Схема стану бази даних PostgreSQL та реплікації" width="320" height="140">
+            <h3 class="metric-card__title">СУБД PostgreSQL — 64 з’єдн.</h3>
+            <p class="metric-card__desc">Затримка реплікації не перевищує 12 мс, останнє резервне копіювання виконано сьогодні о 04:00.</p>
+            <a class="metric-card__link" href="#reports">Стан сховищ</a>
+          </article>
+
+          <article class="metric-card">
+            <img class="metric-card__image" src="images/card-users.svg" alt="Графік зростання активних користувачів до 3 840" width="320" height="140">
+            <h3 class="metric-card__title">Активні сесії — 3 840</h3>
+            <p class="metric-card__desc">Одночасна кількість авторизованих користувачів платформи за останні 24 години (+9,2% за тиждень).</p>
+            <a class="metric-card__link" href="#overview">Статистика аудиторії</a>
+          </article>
+
+          <article class="metric-card">
+            <img class="metric-card__image" src="images/card-deploy.svg" alt="Індикатор успішних релізів CI/CD 28 із 28" width="320" height="140">
+            <h3 class="metric-card__title">Релізи CI/CD — 28 / 28</h3>
+            <p class="metric-card__desc">Усі автоматизовані збірки в гілці main пройшли інтеграційні тести та розгортання без відкатів.</p>
+            <a class="metric-card__link" href="#deploy">Історія деплоїв</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Підвал: на всю ширину, притиснутий до низу вікна -->
+    <footer class="footer page__footer">
+      <div class="footer__inner">
+        <p class="footer__text">© 2026 CloudPulse · Лабораторна робота № 2 (Варіант 4) · Федоренко Д. О., гр. ПЗ-2304</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-label="Приготування кави методом пуровер V60">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7efe2"/>
+      <stop offset="100%" stop-color="#eadbc3"/>
+    </linearGradient>
+    <linearGradient id="coffeeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6f3e21"/>
+      <stop offset="100%" stop-color="#3e200f"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="300" rx="12" fill="url(#bgGrad)"/>
+  <!-- Table surface -->
+  <rect x="0" y="238" width="640" height="62" fill="#d8c1a1"/>
+  <line x1="0" y1="238" x2="640" y2="238" stroke="#b99768" stroke-width="2"/>
+  <!-- Glass carafe -->
+  <path d="M250 155 L235 230 C233 240 242 246 254 246 L356 246 C368 246 377 240 375 230 L360 155 Z" fill="#ffffff" fill-opacity="0.72" stroke="#1e3a5f" stroke-width="3"/>
+  <!-- Coffee inside carafe -->
+  <path d="M245 192 L239 229 C238 236 245 241 255 241 L355 241 C365 241 372 236 371 229 L365 192 Z" fill="url(#coffeeGrad)"/>
+  <!-- Carafe handle -->
+  <path d="M362 168 C392 168 395 215 369 224" fill="none" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round"/>
+  <!-- V60 dripper cone -->
+  <polygon points="242,84 368,84 320,155 290,155" fill="#1e3a5f" stroke="#142842" stroke-width="3"/>
+  <rect x="234" y="148" width="142" height="10" rx="4" fill="#c59b47"/>
+  <!-- Paper filter peeking out -->
+  <polygon points="256,64 354,64 344,84 266,84" fill="#fffdf8" stroke="#d0d7de" stroke-width="2"/>
+  <!-- Steam waves -->
+  <path d="M286 52 C280 40 292 30 286 18" fill="none" stroke="#8b5e3c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M308 48 C302 36 314 26 308 14" fill="none" stroke="#8b5e3c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M330 52 C324 40 336 30 330 18" fill="none" stroke="#8b5e3c" stroke-width="3" stroke-linecap="round"/>
+  <!-- Coffee beans left & right -->
+  <g fill="#4a2815" stroke="#2c160a" stroke-width="1.5">
+    <ellipse cx="145" cy="242" rx="16" ry="10" transform="rotate(-20 145 242)"/>
+    <ellipse cx="176" cy="252" rx="15" ry="9" transform="rotate(15 176 252)"/>
+    <ellipse cx="468" cy="244" rx="16" ry="10" transform="rotate(22 468 244)"/>
+    <ellipse cx="498" cy="254" rx="14" ry="9" transform="rotate(-12 498 254)"/>
+  </g>
+  <!-- Title badge -->
+  <rect x="24" y="22" width="184" height="36" rx="6" fill="#1e3a5f"/>
+  <text x="116" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff">SPECIALTY V60</text>
+</svg>

@@ -1,0 +1,486 @@
+/* Лабораторна робота № 1 — Зовнішня таблиця стилів (Варіант 4, схема г) */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-page: #f4f1ea;
+  --bg-surface: #ffffff;
+  --bg-header: #1e3a5f;
+  --bg-accent-panel: #f5ebd6;
+  --text-main: #1b1f24;       /* Контраст до #ffffff = 16.5:1 */
+  --text-muted: #495057;      /* Контраст до #ffffff = 8.1:1 */
+  --text-on-dark: #ffffff;    /* Контраст до #1e3a5f = 11.4:1 */
+  --primary: #1e3a5f;
+  --primary-hover: #142842;
+  --accent-border: #c59b47;
+  --border-light: #d0d7de;
+  --error-color: #b42318;     /* Контраст до #ffffff = 6.2:1 */
+  --error-bg: #fef3f2;
+  --valid-color: #166534;
+  --focus-color: #0b57d0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+}
+
+/* Посилання для швидкого переходу з клавіатури */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background-color: var(--primary);
+  color: var(--text-on-dark);
+  padding: 0.75rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-link:focus-visible {
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+/* Глобальний видимий фокус для доступності з клавіатури */
+:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Контейнер сторінки (Варіант 4, схема г: 1-header, 2-nav | 4-main | 5-aside, 3-footer) */
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-surface);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Блок 1: header */
+.site-header {
+  background-color: var(--bg-header);
+  color: var(--text-on-dark);
+  padding: 1.5rem 2rem;
+  border-bottom: 4px solid var(--accent-border);
+}
+
+.logo {
+  display: inline-block;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 0.15rem 0.35rem;
+  margin-left: -0.35rem;
+  transition: background-color 0.2s ease;
+}
+
+.logo:hover,
+.logo:focus-visible {
+  background-color: rgba(255, 255, 255, 0.16);
+  text-decoration: underline;
+}
+
+.tagline {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  color: #e6eef8;
+}
+
+/* Середня триколонкова розкладка (Flexbox) */
+.layout-body {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+/* Блок 2: nav ліворуч */
+.site-nav {
+  flex: 0 0 220px;
+  background-color: var(--bg-accent-panel);
+  padding: 1.5rem 1rem;
+  border-right: 1px solid var(--border-light);
+}
+
+.nav-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--primary);
+  border-bottom: 2px solid var(--accent-border);
+  padding-bottom: 0.35rem;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  margin-bottom: 0.4rem;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  border-left: 3px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  background-color: var(--primary);
+  color: var(--text-on-dark);
+  border-left-color: var(--accent-border);
+}
+
+/* Блок 4: main по центру (біла основна область) */
+.site-main {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--bg-surface);
+  padding: 1.75rem 2rem;
+}
+
+.site-main h1 {
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+  font-size: 1.85rem;
+  line-height: 1.25;
+  color: var(--primary);
+}
+
+.site-main h2 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  color: var(--primary);
+  border-bottom: 2px solid #e5e9f0;
+  padding-bottom: 0.3rem;
+}
+
+.site-main h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.site-main p {
+  margin: 0 0 0.9rem;
+}
+
+.article-figure {
+  margin: 1.25rem 0;
+  padding: 0.75rem;
+  background-color: #faf9f6;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.article-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.article-figure figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.feature-list {
+  margin: 0.5rem 0 1.25rem;
+  padding-left: 1.4rem;
+}
+
+.feature-list li {
+  margin-bottom: 0.45rem;
+}
+
+/* Таблиця табличних даних */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.data-table caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid var(--border-light);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+}
+
+.data-table thead th {
+  background-color: var(--primary);
+  color: var(--text-on-dark);
+  font-weight: 600;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.data-table tbody tr:hover {
+  background-color: #edf2f7;
+}
+
+/* Форма бронювання */
+.booking-form {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background-color: #fafbfc;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.booking-form label {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--text-main);
+}
+
+.booking-form input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+  border: 2px solid #8c959f;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.booking-form input:hover {
+  border-color: var(--primary);
+}
+
+.booking-form input:focus-visible {
+  border-color: var(--focus-color);
+}
+
+/* Оформлення валідних та неправильно заповнених полів (:invalid / :valid) */
+.booking-form input:not(:placeholder-shown):invalid,
+.booking-form input.force-invalid:invalid {
+  border-color: var(--error-color);
+  background-color: var(--error-bg);
+}
+
+.booking-form input:not(:placeholder-shown):valid {
+  border-color: var(--valid-color);
+}
+
+.field-hint {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.btn-submit {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--text-on-dark);
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-submit:hover,
+.btn-submit:focus-visible {
+  background-color: var(--primary-hover);
+  border-color: var(--accent-border);
+}
+
+/* Блок 5: aside праворуч */
+.site-aside {
+  flex: 0 0 240px;
+  background-color: var(--bg-accent-panel);
+  padding: 1.5rem 1.1rem;
+  border-left: 1px solid var(--border-light);
+}
+
+.aside-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-top: 3px solid var(--primary);
+  border-radius: 6px;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.aside-card:last-child {
+  margin-bottom: 0;
+}
+
+.aside-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+
+.aside-card p {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+}
+
+.aside-card p:last-child {
+  margin-bottom: 0;
+}
+
+.aside-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+}
+
+.aside-list li {
+  margin-bottom: 0.3rem;
+}
+
+.aside-link {
+  color: #0b4f9c;
+  font-weight: 600;
+  text-decoration: underline;
+  border-radius: 3px;
+  padding: 0.1rem 0.2rem;
+}
+
+.aside-link:hover,
+.aside-link:focus-visible {
+  background-color: var(--primary);
+  color: var(--text-on-dark);
+  text-decoration: none;
+}
+
+/* Блок 3: footer */
+.site-footer {
+  background-color: var(--bg-header);
+  color: var(--text-on-dark);
+  text-align: center;
+  padding: 1.1rem 1.5rem;
+  font-size: 0.92rem;
+  border-top: 4px solid var(--accent-border);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Адаптивність для планшетів і вузьких екранів (включно з 360 px без горизонтальної прокрутки) */
+@media (max-width: 900px) {
+  .layout-body {
+    flex-direction: column;
+  }
+
+  .site-nav,
+  .site-aside {
+    flex: none;
+    width: 100%;
+    border-right: none;
+    border-left: none;
+  }
+
+  .site-nav {
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .site-aside {
+    border-top: 1px solid var(--border-light);
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1.1rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.35rem;
+  }
+
+  .site-main {
+    padding: 1.25rem 1rem;
+  }
+
+  .site-main h1 {
+    font-size: 1.45rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.45rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}

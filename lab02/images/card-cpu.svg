@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="320" height="140">
+  <rect width="320" height="140" rx="8" fill="#f8fafc"/>
+  <line x1="20" y1="118" x2="300" y2="118" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="20" y1="84" x2="300" y2="84" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="20" y1="50" x2="300" y2="50" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M20 96 L65 88 L110 80 L155 84 L200 76 L245 82 L300 79" fill="none" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="20" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#475569">CLUSTER CPU</text>
+  <text x="300" y="30" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#7c3aed">42%</text>
+</svg>
